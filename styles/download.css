@@ -42,8 +42,9 @@ main {
 }
 
 main h1 {
+    text-align: center;
     justify-self: center;
-    font-size: 3.5vw;
+    font-size: clamp(2rem, 3.5vw, 6rem);
 }
 
 .downloads-table {
@@ -55,6 +56,17 @@ main h1 {
 
 .downloads-table .col:not(:last-of-type) {
     border-inline-end: 1px solid hsl(var(--shallow-background));
+}
+
+@media (width < 68rem) {
+    .downloads-table {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .downloads-table .col:not(:last-of-type) {
+        border-inline-end: 0px;
+    }
 }
 
 .downloads-table .head {

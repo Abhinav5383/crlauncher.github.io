@@ -93,6 +93,7 @@ main h1 {
         align-items: center;
         gap: 0.5em;
         color: hsl(var(--muted-foreground));
+        text-transform: capitalize;
     }
 
     svg {
@@ -126,12 +127,41 @@ main h1 {
     }
 }
 
-.downloads-table .col:nth-of-type(odd) .row:nth-child(odd) {
+.downloads-table .col:nth-of-type(odd) .row:nth-of-type(even) {
     background-color: hsl(var(--card-background));
 }
 
-.downloads-table .col:nth-of-type(even) .row:nth-child(even) {
+.downloads-table .col:nth-of-type(even) .row:nth-of-type(odd) {
     background-color: hsl(var(--card-background));
+}
+
+.alternate-download {
+    display: grid;
+    place-content: center;
+
+    a {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        color: hsl(var(--muted-foreground));
+        text-decoration: underline;
+        text-underline-offset: 0.5em;
+    }
+
+    a .info {
+        font-family: monospace;
+        color: lch(from currentColor l calc(c / 2) h / 0.75);
+    }
+
+    a svg {
+        font-size: 0.75em;
+        color: lch(from currentColor calc(l / 2) calc(c / 2) h);
+    }
+
+    a:hover,
+    a:focus-visible {
+        color: hsl(var(--accent-foreground));
+    }
 }
 
 footer div {
@@ -141,18 +171,19 @@ footer div {
     padding: 1rem 0;
 
     a {
-        text-decoration: underline;
-        color: hsl(var(--accent-foreground));
-        text-underline-offset: 0.2em;
+        color: hsl(var(--extra-muted-foreground));
         padding: 0.2em 1em;
         border-radius: 0.3em;
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        text-underline-offset: 0.2em;
+        text-decoration-color: hsl(var(--extra-muted-foreground));
     }
 
     a:hover,
     a:focus-visible {
-        background: hsl(var(--accent-foreground));
+        background: hsl(var(--extra-muted-foreground));
         color: black;
-        /* text-decoration: none; */
     }
 }
 

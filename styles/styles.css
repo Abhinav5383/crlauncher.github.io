@@ -63,11 +63,9 @@ a {
 
 .container {
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
     max-width: 90rem;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
 }
 
 .muted-text {
@@ -186,8 +184,8 @@ a {
 .hero__button .icon {
     color: currentColor;
     fill: currentColor;
-    width: 1.35rem;
-    height: 1.35rem;
+    width: 1.5em;
+    height: 1.5em;
     flex-shrink: 0;
 }
 
@@ -273,6 +271,10 @@ a {
     }
 
     .container {
-        padding: 0 3rem;
+        padding-inline: 3rem;
     }
+}
+
+.hidden {
+    display: none !important;
 }

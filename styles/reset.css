@@ -25,3 +25,8 @@ ul,
 ol {
     list-style: none;
 }
+
+svg {
+    width: 1.3em;
+    height: 1.3em;
+}

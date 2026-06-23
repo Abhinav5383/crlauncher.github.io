@@ -1,0 +1,221 @@
+html {
+    scrollbar-gutter: unset;
+}
+
+body {
+    min-block-size: 100svb;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+}
+
+.downloads-header {
+    width: 100%;
+    background-color: hsl(var(--card-background));
+}
+
+.downloads-header nav {
+    padding-block: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.downloads-header nav a {
+    height: 2.5rem;
+    padding-inline: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    border-radius: 0.3rem;
+
+    &:hover,
+    &:focus-visible {
+        background-color: hsl(var(--shallow-background));
+    }
+}
+
+main {
+    display: grid;
+    align-content: start;
+    padding-block: 4rem;
+    gap: 2rem;
+}
+
+main h1 {
+    text-align: center;
+    justify-self: center;
+    font-size: clamp(2rem, 3.5vw, 6rem);
+}
+
+.downloads-table {
+    padding: 2rem;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, minmax(14rem, 1fr));
+}
+
+.downloads-table .col:not(:last-of-type) {
+    border-inline-end: 1px solid hsl(var(--shallow-background));
+}
+
+@media (width < 68rem) {
+    .downloads-table {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .downloads-table .col:not(:last-of-type) {
+        border-inline-end: 0px;
+    }
+}
+
+.downloads-table .head {
+    display: grid;
+    justify-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-block-end: 1px solid hsl(var(--shallow-background));
+    color: hsl(var(--muted-foreground));
+
+    svg {
+        width: auto;
+        height: 3rem;
+    }
+}
+
+.downloads-table .row {
+    padding: 1rem 1rem;
+    padding-inline-start: 2rem;
+
+    a {
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        color: hsl(var(--muted-foreground));
+        text-transform: capitalize;
+    }
+
+    svg {
+        width: 1.1em;
+        height: 1.1em;
+        color: hsl(var(--extra-muted-foreground));
+        opacity: 0.2;
+        transition: opacity 300ms;
+    }
+
+    a:hover,
+    a:focus-visible {
+        color: hsl(var(--accent-foreground));
+        --highlight: hsl(var(--accent-foreground));
+
+        svg {
+            opacity: 1;
+        }
+    }
+
+    em {
+        border-radius: 0.3rem;
+        padding: 0.15em 0.3em;
+        color: var(--highlight, hsl(var(--foreground)));
+        background-color: lch(from currentColor l c h / 0.12);
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-family: monospace;
+        font-style: normal;
+    }
+}
+
+.downloads-table .col:nth-of-type(odd) .row:nth-of-type(even) {
+    background-color: hsl(var(--card-background));
+}
+
+.downloads-table .col:nth-of-type(even) .row:nth-of-type(odd) {
+    background-color: hsl(var(--card-background));
+}
+
+.alternate-download {
+    display: grid;
+    place-content: center;
+
+    a {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        color: hsl(var(--muted-foreground));
+        text-decoration: underline;
+        text-underline-offset: 0.5em;
+    }
+
+    a .info {
+        font-family: monospace;
+        color: lch(from currentColor l calc(c / 2) h / 0.75);
+    }
+
+    a svg {
+        font-size: 0.75em;
+        color: lch(from currentColor calc(l / 2) calc(c / 2) h);
+    }
+
+    a:hover,
+    a:focus-visible {
+        color: hsl(var(--accent-foreground));
+    }
+}
+
+footer div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+
+    a {
+        color: hsl(var(--extra-muted-foreground));
+        padding: 0.2em 1em;
+        border-radius: 0.3em;
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        text-underline-offset: 0.2em;
+        text-decoration-color: hsl(var(--extra-muted-foreground));
+    }
+
+    a:hover,
+    a:focus-visible {
+        background: hsl(var(--extra-muted-foreground));
+        color: black;
+    }
+}
+
+.loading-indicator {
+    display: grid;
+    place-content: center;
+
+    .loader {
+        display: grid;
+        gap: 2rem;
+        justify-items: center;
+        color: hsl(var(--muted-foreground));
+    }
+
+    .loader svg {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .loader span {
+        font-style: italic;
+        font-size: 1.3rem;
+        animation: shimmer 800ms linear alternate infinite;
+    }
+}
+
+@keyframes shimmer {
+    from {
+        filter: brightness(50%);
+    }
+
+    to {
+        filter: brightness(150%);
+    }
+}
